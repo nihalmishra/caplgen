@@ -1,3 +1,2 @@
 # caplgen
-Webapp to generate CAPL scripts from .xls test cases
-Added permissions
+Webapp to generate CAPL scripts from .xls test cases.
