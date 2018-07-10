@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="col-lg-3">
+  <h1 class="my-4"></h1>
+  <div class="list-group" id="appList">
+    <a href="/" class="list-group-item ">Home</a>
+    <a href="{% url 'dzip:index' %}" class="list-group-item active">Generate CAPL script</a>
+    <a href="#" class="list-group-item">Operation 3</a>
+  </div>
+</div>
+
+<div class="col-lg-9">
+
+    <div class="card card-outline-secondary my-4">
+      <div class="card-header">
+        Upload Your Test Case
+      </div>
+      <form class="card-body" action="{% url 'dzip:generate' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{form}}
+        <br>
+        <!-- <input type="file"
+               accept=".xlsx,.xls" 
+               title="Upload excel file"
+               name="excel_file"
+               style="border: 1px solid black; padding: 5px;"
+               required="required"> -->
+        <hr>    
+        <input type="submit"
+               value="Generate"
+               class="btn btn-success">
+      </form>
+  </div>
+  <!-- /.col-lg-9 -->
+</div>
+
+{% endblock %}
+

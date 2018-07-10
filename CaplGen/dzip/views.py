@@ -1,9 +1,21 @@
 from django.shortcuts import render, redirect
-#import openpyxl
-# Create your views here.
-def index(request):
-    return render(request,'dzip.html',{})
+from django.http import HttpResponseRedirect
+from dzip.models import UploadForm, Upload
+from django.urls import reverse
 
+def index(request):
+    excel_file = UploadForm()
+    return render(request,'dzip/dzip.html',{'form': excel_file})
+
+def generate(request):
+    if request.method=="POST":
+        excel_file = UploadForm(request.POST, request.FILES)
+        if excel_file.is_valid():
+            excel_file.save()
+            return HttpResponseRedirect(reverse('dzip:index'))
+    else:
+        excel_file = UploadForm()
+    return render(request,'dzip/dzip.html', {'form': excel_file})
 # def upload(request):
 #     if "GET" == request.method:
 #         return render(request,'dzip.html',{})
