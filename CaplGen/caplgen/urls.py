@@ -28,5 +28,7 @@ urlpatterns = [
     
 ]
 
-urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#Serving static and media will work only in development env
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
