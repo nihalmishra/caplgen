@@ -17,8 +17,10 @@
       <div class="card-header">
         Upload Your Test Case
       </div>
+      {% load widget_tweaks %}
       <form class="card-body" action="{% url 'dzip:generate' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %} {{form}}
+        {% csrf_token %} 
+        {% render_field form.xlfile accept=".xlsx,.xls" title="Upload excel file" style="border: 1px solid black; padding: 5px;" %}
         <br>
         <!-- <input type="file"
                accept=".xlsx,.xls" 
