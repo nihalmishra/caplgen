@@ -20,8 +20,15 @@
       {% load widget_tweaks %}
       <form class="card-body" action="{% url 'dzip:generate' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %} 
+        
         {% render_field form.xlfile accept=".xlsx,.xls" title="Upload excel file" style="border: 1px solid black; padding: 5px;" %}
+        &nbsp;&nbsp;&nbsp;
+        {% render_field form.sheet_name placeholder="Enter Sheet name" style="border: 1px solid black; padding: 5px;" %}
+        &nbsp;&nbsp;&nbsp;
+        {% render_field form.option title="Select Type" style="border: 1px solid black; padding: 5px;" %}
+        &nbsp;&nbsp;&nbsp;
         <br>
+        
         <!-- <input type="file"
                accept=".xlsx,.xls" 
                title="Upload excel file"
