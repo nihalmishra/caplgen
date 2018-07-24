@@ -1,7 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
 from django.utils import timezone
-import pytz
 
 CHOICES = (
     ('capl','CAPL'),
@@ -11,7 +10,7 @@ CHOICES = (
 class Upload(models.Model):
 	xlfile = models.FileField(upload_to="files/")    
 	upload_date = models.DateTimeField(auto_now_add=True)
-	sheet_name = models.CharField(max_length=40,default='')
+	sheet_name = models.CharField(max_length=40, default='')
 	option = models.CharField(max_length=8, choices=CHOICES, default='capl-xml')
 
 	def __str__(self):
